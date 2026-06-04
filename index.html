@@ -202,16 +202,5 @@ function submitForm() {
   document.getElementById('success-box').style.display='block';
   fetch('https://formspree.io/f/xzdwqrke',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({name:fn+' '+ln,email:em,company:co,phone:ph,_subject:'New Registration: '+fn+' '+ln,zoom_link:'https://bit.ly/4uZ9WMJ'})}).then(function(r){console.log('Status:',r.status);}).catch(function(e){console.log('Error:',e);});
 }
-function downloadICS(){var s='BEGIN:VCALENDAR
-VERSION:2.0
-BEGIN:VEVENT
-DTSTART;TZID=America/New_York:20260618T130000
-DTEND;TZID=America/New_York:20260618T140000
-SUMMARY:Listings & Leads Using AI Webinar
-DESCRIPTION:Zoom: https://bit.ly/4uZ9WMJ
-LOCATION:https://bit.ly/4uZ9WMJ
-END:VEVENT
-END:VCALENDAR';var b=new Blob([s],{type:'text/calendar'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='webinar.ics';document.body.appendChild(a);a.click();document.body.removeChild(a);}
-</script>
-</body>
-</html>
+function downloadICS(){var s='BEGIN:VCALENDAR\r\nVERSION:2.0\r\nBEGIN:VEVENT\r\nDTSTART;TZID=America/New_York:20260618T130000\r\nDTEND;TZID=America/New_York:20260618T140000\r\nSUMMARY:Listings & Leads Using AI Webinar\r\nDESCRIPTION:Zoom: https://bit.ly/4uZ9WMJ\r\nLOCATION:https://bit.ly/4uZ9WMJ\r\nEND:VEVENT\r\nEND:VCALENDAR';var b=new Blob([s],{type:'text/calendar'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='webinar.ics';document.body.appendChild(a);a.click();document.body.removeChild(a);}
+  
