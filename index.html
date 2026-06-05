@@ -118,31 +118,17 @@ function go() {
   var co = document.getElementById("co").value.trim();
   var ph = document.getElementById("ph").value.trim();
   var em = document.getElementById("em").value.trim();
-  var msg = document.getElementById("emsg");
-  msg.style.display = "none";
-  if (!fn || !ln || !co || !ph || !em) {
-    msg.textContent = "Please fill in all fields.";
-    msg.style.display = "block";
-    return;
-  }
-  if (em.indexOf("@") === -1) {
-    msg.textContent = "Please enter a valid email.";
-    msg.style.display = "block";
-    return;
-  }
+  if (!fn || !ln || !co || !ph || !em) { alert("Please fill in all fields."); return; }
+  if (em.indexOf("@") === -1) { alert("Please enter a valid email."); return; }
   document.getElementById("sbtn").textContent = "Registering...";
   document.getElementById("sbtn").disabled = true;
   document.getElementById("fs").style.display = "none";
   document.getElementById("sok").style.display = "block";
-fetch("https://api.web3forms.com/submit", {
-    method: "POST",
-    headers: {"Content-Type": "application/json", "Accept": "application/json"},
-    body: JSON.stringify({access_key: "f56ce833-8e63-4464-8844-ece97f7fbe71", name: fn + " " + ln, email: em, company: co, phone: ph, subject: "New Registration: " + fn + " " + ln})
-  }).then(function(r) {
-    console.log("Status:", r.status);
-  }).catch(function(e) {
-    console.log("error:", e);
-  });
+  var x = new XMLHttpRequest();
+  x.open("POST", "https://api.web3forms.com/submit");
+  x.setRequestHeader("Content-Type", "application/json");
+  x.setRequestHeader("Accept", "application/json");
+  x.send(JSON.stringify({access_key:"f56ce833-8e63-4464-8844-ece97f7fbe71",name:fn+" "+ln,email:em,company:co,phone:ph,subject:"New Registration: "+fn+" "+ln}));
 }
 </script>
 </body>
