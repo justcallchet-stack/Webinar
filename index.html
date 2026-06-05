@@ -137,7 +137,7 @@ function go() {
  fetch("https://api.web3forms.com/submit", {
     method: "POST",
     headers: {"Content-Type": "application/json", "Accept": "application/json"},headers: {"Content-Type": "application/json", "Accept": "application/json", "Authorization": "Bearer d7a82745a83949928ae2d94716eb8322"},
-    body: JSON.stringify{access_key: "f56ce833-8e63-4464-8844-ece97f7fbe71", name: fn + " " + ln, email: em, company: co, phone: ph, subject: "New Registration: " + fn + " " + ln}
+    body: JSON.stringify({access_key: "f56ce833-8e63-4464-8844-ece97f7fbe71", name: fn + " " + ln, email: em, company: co, phone: ph, subject: "New Registration: " + fn + " " + ln})
   }).then(function(r) {
     console.log("Formspree status:", r.status);
   }).catch(function(e) {
